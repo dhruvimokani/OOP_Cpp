@@ -1,87 +1,115 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-// Display array
-template <class T>
-void display(T arr[], int size) {
-    for (int i = 0; i < size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-}
-
-// Find maximum
-template <class T>
-T findMax(T arr[], int size) {
-    T max = arr[0];
-    for (int i = 1; i < size; i++) {
-        if (arr[i] > max)
-            max = arr[i];
-    }
-    return max;
-}
-
-// Reverse array
-template <class T>
-void reverseArray(T arr[], int size) {
-    for (int i = 0; i < size / 2; i++) {
-        T temp = arr[i];
-        arr[i] = arr[size - 1 - i];
-        arr[size - 1 - i] = temp;
-    }
-}
-
-// Find leader elements
-template <class T>
-void leaders(T arr[], int size) {
-    T leader = arr[size - 1];
-    cout << "Leader elements: " << leader << " ";
-
-    for (int i = size - 2; i >= 0; i--) {
-        if (arr[i] > leader) {
-            leader = arr[i];
-            cout << leader << " ";
+//FIND MAX 
+template<typename T>
+T findMAX(T arr[] ,int n)
+{
+    T Max=arr[0];
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]>Max)
+        {
+            Max=arr[i];
         }
     }
-    cout << endl;
+    return Max;
 }
 
-int main() {
-    int intArr[] = {16, 17, 4, 3, 5, 2};
-    float floatArr[] = {1.1, 5.5, 2.2, 6.6, 3.3};
-    char charArr[] = {'a', 'z', 'b', 'y', 'c'};
+//REVERSE ARRAY
+template<typename T>
+void reverseArray(T arr[], int n)
+{
+    for(int i=0;i<n/2;i++)
+    {
+T temp=arr[i];
+arr[i]=arr[n-i-1];
+arr[n-i-1]=temp;
+    }
+}
 
-    int size1 = 6, size2 = 5, size3 = 5;
+//DISPLAY
+template<typename T>
+void Display(T arr[], int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout << arr[i] << " ";
+        cout << endl;
+    }
+}
 
-    // Integer array
-    cout << "Integer Array: ";
-    display(intArr, size1);
-    cout << "Maximum: " << findMax(intArr, size1) << endl;
-    leaders(intArr, size1);
-    reverseArray(intArr, size1);
-    cout << "Reversed: ";
-    display(intArr, size1);
+int main()
+{
+int ch;
 
-    cout << endl;
+cout<<"1 for int arrray"<<endl<<"2 for float array"<<endl<<"3 for char array"<<endl;
+cin>>ch;
 
-    // Float array
-    cout << "Float Array: ";
-    display(floatArr, size2);
-    cout << "Maximum: " << findMax(floatArr, size2) << endl;
-    leaders(floatArr, size2);
-    reverseArray(floatArr, size2);
-    cout << "Reversed: ";
-    display(floatArr, size2);
+switch(ch)
+{
+case 1:
+{int s;
+ cout<<"Enter How many Elements You want to add in array:"<<endl;
+cin>>s;
+int a[s];
+cout<<"Enter Array Elements:"<<endl;
+for(int i=0;i<s;i++)
+    {
+       cin >> a[i];
+    }
+int Maximum=findMAX(a,s);
+cout<<"\nMaximum Element:"<<Maximum<<endl;
 
-    cout << endl;
+reverseArray(a,s);
 
-    // Character array
-    cout << "Character Array: ";
-    display(charArr, size3);
-    cout << "Maximum: " << findMax(charArr, size3) << endl;
-    leaders(charArr, size3);
-    reverseArray(charArr, size3);
-    cout << "Reversed: ";
-    display(charArr, size3);
+cout<<endl;
+Display(a,s);
+break;
+}
+case 2: 
+{int m;
+cout<<"Enter How many Elements You want to add in array:"<<endl;
+cin>>m;
+float b[m];
+cout<<"Enter Array Elements:"<<endl;
+for(int i=0;i<m;i++)
+    {
+       cin >> b[i];
+    }
+float maximum=findMAX(b,m);
+cout<<"\nMaximum Element:"<<maximum<<endl;
+
+reverseArray(b,m);
+
+cout<<endl;
+Display(b,m);
+break;
+}
+case 3: 
+{int y;
+cout<<"Enter How many Elements You want to add in array:"<<endl;
+cin>>y;
+char x[y];
+cout<<"Enter Array Elements:"<<endl;
+for(int i=0;i<y;i++)
+    {
+       cin >> x[i];
+    }
+char max=findMAX(x,y);
+cout<<"\nMaximum Element:"<<max<<endl;
+
+reverseArray(x,y);
+
+cout<<endl;
+Display(x,y);
+
+break;
+}
+}
+
+
+
 
     return 0;
 }
